@@ -2,7 +2,7 @@
 Repository for the [Paleogenetics and Vegetation Modelling Group](https://www.ips.unibe.ch/research/palgen/index_eng.html) at the University of Bern. All files were created for this group.
 
 ## New Members
-Follow the instructions in the [UBELIX Starter Kit](Instructions/UBELIX_Starter_Kit.md) to create an account on UBELIX (UniBe HPC) and access the group's database
+Follow the instructions in the [UBELIX Starter Kit](Instructions/UBELIX_Starter_Kit.md) to create an account on [UBELIX](https://hpc-unibe-ch.github.io/) (UniBe HPC) and access the group's database
 
 ## General Information on this Repository
 All instructions are found in the [Instructions](Instructions) folder.
