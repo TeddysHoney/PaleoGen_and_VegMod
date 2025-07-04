@@ -1,5 +1,5 @@
 # Paleogenetics and Vegetation Modelling
-Repository for the Paleogenetics and Vegetation Modelling Group at the University of Bern
+Repository for the [Paleogenetics and Vegetation Modelling Group](https://www.ips.unibe.ch/research/palgen/index_eng.html) at the University of Bern. All files were created for this group.
 
 ## New Members
 Follow the instructions in the [UBELIX Starter Kit](Instructions/UBELIX_Starter_Kit.md) to create an account on UBELIX (UniBe HPC) and access the group's database
@@ -18,6 +18,6 @@ cd $WORKSPACE/HOLOGENE/scripts
 # Ancient DNA Pipeline
 We have opted to create our own pipeline for aDNA processing.
 
-🚧 *__Our Pipeline is currently underconstruction__*
+🚧 *__Our Pipeline is currently under construction.__*
 
 Relevent information will appear here.
