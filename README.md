@@ -5,7 +5,7 @@ Repository and SOP for the [Paleogenetics and Vegetation Modelling Group](https:
 
 ## General Information on this Repository
 
-[SOP](SOP) directory houses all relevant instructions for field and lab work.
+[SOP](SOP) directory houses all relevant instructions for lab work.
 
 All instructions for bioinformatics are found in the [Instructions](Instructions) directory.
 
@@ -14,7 +14,7 @@ All scripts are found in the [Scripts](Scripts) folder. This is the backup for a
 Scripts are found in the following folder in our workspace on UBELIX:
 
 ```bash
-cd $WORKSPACE/HOLOGENE/scripts
+cd $WORKSPACE/references/scripts
 ```
 
 ## New Members
