@@ -2,6 +2,7 @@
 
 Repository and SOP for the [Paleogenetics and Vegetation Modelling Group](https://www.ips.unibe.ch/research/palgen/index_eng.html) at the University of Bern. All pipelines and scripts are created specificly for this group.
 
+[ResearchGate Link](https://www.researchgate.net/lab/Paleoecology-group-Bern-Willy-Tinner)
 
 ## General Information on this Repository
 
