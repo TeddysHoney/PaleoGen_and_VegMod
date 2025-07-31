@@ -131,7 +131,7 @@ cd $HOME
 Again, you can set up alias to create short cuts so you don't have to type every thing out. To do this run the [pal_config.sh](../Scripts/pal_config.sh) file.
 
 ```bash
-sbatch pal_config.sh
+sbatch $WORKSPACE/reference/scripts/pal_config.sh
 ```
 
 This will set up the following shortcuts: 
@@ -145,5 +145,13 @@ alias ips='HPC_WORKSPACE=ips_pal module load Workspace'
 alias queue='squeue --me'
 ```
 It will also setup some other configurations, which are not relevant for now. Please read the script for more information.
+
+>[!important]
+>Please remember to delete all __\*.err__ and __\*.out files__ after running this script.
+>
+>```bash
+>rm job_pal*
+>```
+
 
 Tada, you're all set. 
