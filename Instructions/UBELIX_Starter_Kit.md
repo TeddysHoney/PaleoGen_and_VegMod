@@ -1,6 +1,6 @@
 # UBELIX Starter Kit (MacOS)
 
-Simplified set up of UBELIX for Mac users. 
+Simplified set up of UBELIX in Terminal for Mac users. 
 
 Window Version is in development.
 
@@ -20,9 +20,8 @@ An email will be sent with your account information. Follow the instructions on 
 
 ## SSH Setup 
 
-
 This is completed on your computer to set up a short cut to log in to UBELIX.
-follow the instructions on [this page](https://hpc-unibe-ch.github.io/firststeps/SSH-keys/)
+Follow the [this page](https://hpc-unibe-ch.github.io/firststeps/SSH-keys/) for the complete instructions. The following details and helpfull tips.
 
 To find the '.ssh' file type the following into the command line, which will show all hidden files. 
 
@@ -59,7 +58,8 @@ To save changes, follow the directions along the bottom edge of the screen.
 
 You can also set up alias so you have a short cut to call the __'ssh'__ command. To do this you have to note if you are in *bash* or *zsh* (for Mac users). Look at the top of your terminal to see if you are in bash or zsh. 
 
-__If in bash:__ 
+#### BASH
+If in *__bash__*:
 
 ```bash
 nano .bash_profile
@@ -71,31 +71,36 @@ Add the following line to the end of the file:
 source ~/.custom_commands.sh
 ```
 
-Edit the file and add the alias command
+Edit the file
 
 ```bash
 nano .custom_commands.sh
 ```
+And add the relevant command: 
 
-If in zsh:
+```bash
+#!./bin/bash
+alias ubelix01='ssh ubelix01'
+```
+#### ZSH
+
+If in *__zsh__*:
 ```zsh
 nano .zshrc
 ```
 
 Then enter the following:
-```bash
+```zsh
 alias ubelix01='ssh ubelix01'
 ```
 
->[!warning]
-> In bash, an extra line of code is required at the start of *.custom_commands.sh* file. So the overall format of the file is as follows:
->```bash
->#!./bin/bash
->alias <command>='short_cut'
->```
+You can can create individual alias for each of the login nodes by adding the following code to the file you have open.
 
-You can can create individual alias for each of the login nodes.
-
+```bash
+alias ubelix02='ssh ubelix02'
+alias ubelix03='ssh ubelix03'
+alias ubelix04='ssh ubelix04'
+```
 
 ## Workspace
 
@@ -123,18 +128,22 @@ To access your own storage:
 cd $HOME
 ```
 
-Again, you can set up alias to create short cuts so you don't have to type every thing out. 
+Again, you can set up alias to create short cuts so you don't have to type every thing out. To do this run the [pal_config.sh](PaleoGen_and_VegMod/Scripts/pal_config.sh) file.
 
 ```bash
-nano $HOME/.bashrc
+sbatch pal_config.sh
 ```
 
-Add the following code to the file:
-
+This will set up the following shortcuts: 
 ```bash
+#shortcuts 
+alias ll='ls -a'
+alias home='cd $HOME'
+alias workspace='cd $WORKSPACE'
 alias load='module load Workspace'
 alias ips='HPC_WORKSPACE=ips_pal module load Workspace'
-alias workspace='cd $WORKSPACE'
+alias queue='squeue --me'
 ```
+It will also setup some other configurations, which are not relevant for now. Please read the script for more information.
 
-Tada, you're in. 
+Tada, you're all set. 
