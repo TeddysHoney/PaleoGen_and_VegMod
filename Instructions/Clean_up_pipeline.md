@@ -37,7 +37,7 @@ sbatch <script_name>.sh
 
 ## Clean up 
 
-Script:  [clean_up_pipeline_final.sh]
+Script:  [clean_up_pipeline_final.sh](../Scripts/clean_up_pipeline_final.sh)
 
 This script will remove the primers and duplicates from the raw reads, thereby "cleaning"  it for alignment to a reference genome.
 
@@ -66,16 +66,16 @@ touch <sample_name.txt> # this may need to be changed
 
 # Mapping
 
-Script: [mapping_script.sh]
+Script: [mapping_script.sh](../Scripts/mapping_script.sh)
 
-This is run in the same directory as the [clean_up_pipeline_final.sh] script. 
+This is run in the same directory as the [clean_up_pipeline_final.sh](../Scripts/clean_up_pipeline_final.sh) script. 
 
 Check list before running the code:
 - [ ] define ${working_path}. *This is defined as the directory you are running the script in.*
 	- This is the first variable you will encounter in the script
 - [ ] create a .txt file that lists the reference genomes, preferably named __genome_name.txt__,  as listed by the following commands: ***(copy exactly as seen)***
 	```bash 
-		cd $WORKSPACE/HOLOGENE/genomes 
+	cd $WORKSPACE/HOLOGENE/genomes 
 	```
   ```bash
   ls *.{fasta,fa,fna}
