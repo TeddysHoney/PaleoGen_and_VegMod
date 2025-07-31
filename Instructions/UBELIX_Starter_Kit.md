@@ -128,7 +128,7 @@ To access your own storage:
 cd $HOME
 ```
 
-Again, you can set up alias to create short cuts so you don't have to type every thing out. To do this run the [pal_config.sh](PaleoGen_and_VegMod/Scripts/pal_config.sh) file.
+Again, you can set up alias to create short cuts so you don't have to type every thing out. To do this run the [pal_config.sh](Scripts/pal_config.sh) file.
 
 ```bash
 sbatch pal_config.sh
