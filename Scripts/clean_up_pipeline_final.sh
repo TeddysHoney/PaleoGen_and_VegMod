@@ -11,7 +11,7 @@
 #SBATCH --error=job_pal_%j.err
 
 # Script written by Jennifer Zhu (jennifer.zhu@unibe.ch)
-# Last updates 18.06.2025
+# Last updates 28.07.2025
 # All echo in *.out
 
 # load required modules
@@ -101,7 +101,7 @@ do
 	fastqc -f fastq ${scratch_path_sample}/${sample_name}_R2_001.fastq.gz -o ${saved_path_sample}
 	
 	# rest is done in bbmap
-	cd $WORKSPACE/HOLOGENE/programs/bbmap/
+	cd $WORKSPACE/reference/programs/bbmap/
 	
 	# Step1: Remove low quality reads, adapters and PolyGs and remove last base
 	sh bbduk.sh -Xmx2g in1=${scratch_path_sample}/${sample_name}_R1_001.fastq.gz in2=${scratch_path_sample}/${sample_name}_R2_001.fastq.gz out1=${scratch_path_sample}/${sample_name}_R1_001_clean.fastq.gz out2=${scratch_path_sample}/${sample_name}_R2_001_clean.fastq.gz qtrim=rl trimpolygright=10 ref=resources/adapters.fa ktrim=r k=17 mink=9 hdist=1 minlength=15 tbo=t forcetrimright2=1

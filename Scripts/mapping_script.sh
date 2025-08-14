@@ -11,7 +11,7 @@
 #SBATCH --error=job_pal_%j.err
 
 # Script written by Jennifer Zhu (jennifer.zhu@unibe.ch)
-# Last updates 19.06.2025
+# Last updates 28.07.2025
 # All echo in *.out
 
 # load required modules
@@ -75,7 +75,7 @@ do
 		echo "current path: $(pwd)"
 		
 		# align to reference genome
-		bwa aln -l 1024 -n 0.01 -o 2 -t 16 $WORKSPACE/HOLOGENE/genomes/${genome} ${saved_path_sample}/${sample_name}_001_merged.fastq.gz > ${sample_name}_${genome_name}_mapped.sai
+		bwa aln -l 1024 -n 0.01 -o 2 -t 16 $WORKSPACE/reference/genomes/${genome} ${saved_path_sample}/${sample_name}_001_merged.fastq.gz > ${sample_name}_${genome_name}_mapped.sai
 		echo $(ls -l *_mapped.sai)
 		
 		# convert .sai directly to .bam file, note that the command is specific for single-end reads (samse)
