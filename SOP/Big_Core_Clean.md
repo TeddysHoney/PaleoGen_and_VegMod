@@ -38,7 +38,7 @@ Start by getting the following materials ready:
 
 
 Place the materials in the following format: 
- ![lab set up](img/lab_setup.jpeg)
+ ![lab set up](../img/lab_setup.jpeg)
 
 ## Putting on PPE
 1. Put on __gloves__, careful to only touch the edge of the gloves with your bare hands.
