@@ -52,4 +52,4 @@ We have opted to create our own pipeline for aDNA processing.
 
 🚧 *__Our Pipeline is currently under construction.__*
 
-Relevent information will appear here.
+Please follow the [aDNA instructions](Instructions/aDNA_pipeline.md) for our current workflow.
