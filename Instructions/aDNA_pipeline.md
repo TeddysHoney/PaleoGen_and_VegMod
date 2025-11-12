@@ -11,6 +11,7 @@ cd $WORKSPACE/reference/scripts
 ```
 This pipeline make use of an envorinment file to be used in conjuction with the scripts to set variables. This is to avoid editing the scripts and creating errors. Currently, the scripts should not contain errors when run. If you encounter errors, please email jennifer.zhu@unibe.com. 
 
+
 ## Setup
 
 Please copy the *.env template file to the project folder or your project-specific folder and rename it in the following format: <project_name>_<species>_<run_number>.env
@@ -30,43 +31,60 @@ nano <project_name>_<species>_<run_number>.env
 >[!warning]
 >Ensure that there are no spaces around the "=". This will cause the script to fail.
 
-## Clean up 
 
-Script:  [clean_up_pipeline_final.sh](../Scripts/clean_up_pipeline_final.sh)
+## Dowloading Fastq Files and Auto-writing sample_text 
 
-This script is to be run on paired-end sequencing data. It will download raw fastq data directly from [UHTS-lims](https://lims.bioinformatics.unibe.ch/), remove adapters and merge paired-end reads. It will also remove duplicates for optimal data storage. 
+Script:  [clean_up_pipeline_final.sh](../Scripts/clean_up_pipeline_final.sh) *change
 
-### Direct Download from UHTS-lims
+To download the raw fastq data directly from [UHTS-lims](https://lims.bioinformatics.unibe.ch/), please provide a link file named preferably with the following convention: *__link_<project_name>_<species>_<run>.txt__* with the download link for all the fastq files you want to download. __Each link should be a separate line.__
 
-To download the raw fastq data directly from [UHTS-lims](https://lims.bioinformatics.unibe.ch/), please provide a link file named preferably with the following convention: *__link_<project_name>_<species>_<run>.txt__*. Each link should be a separate line.
-
-Ensure the name of this file is saved as *__link_text__* variable in the *.env file. This will automatically write the sample names to a *.txt document used for downstream analysis.
+Ensure the name of this file is saved as the *__link_text__* variable in the *.env file. This will automatically write the sample names to a *.txt document used for downstream analysis.
 
 >[!important]
 >If mapping to a single organism (i.e. NOT metagenomics) it is simpler for downstream analysis to separate samples by species.
 >
 >Put the absolute path to to the link file to avoid errors.
 
-### Running Script with pre-download fastq files (Edit) 
+### Running Script with pre-downloaded fastq files (Edit) 
 
-In the *.env file, ensure that link_text is set to "NA" to skip fastq download. Ensure that all our fastq files are in the same directory, start an interactive session and used the sample_autowrite.sh script to create a sample_text with all the sample names. 
-
-Ensure that this is the same sample_text name is the same as the one set in the *.env file.
+In the *.env file, ensure that link_text is set to "NA" to skip fastq download. Then place all your fastq files in the same folder (i.e. project folder) and run the same script.
 
 >[!warning] 
->Do not run multiple sample_autowrite in the same directory at once. This will result in the same final sample_text.
+>If you are not downloading directly from UHTS-lims and running with pre-downloaded fastq files, DO NOT run multiple scripts at once in the same directory. This will result in the same final sample_text as the program will generate a sample_text with all the *.fastq.gz files in the same directory. This script will also generate sample names based on the the UHTS-lims naming convention. If you have a different naming convention, please start an interactive session, then edit and run the [sample_autowrite.sh] script. 
+
+
+### Submitting the Script
+
+Submit the script with the following command:
+```bash
+sbatch $WORKSPACE/reference/script/clean_up_submitter.sh <edited_enviorment_file>.env
+```
+
+
+
+## Clean up 
+
+Script:  [clean_up_pipeline_final.sh](../Scripts/clean_up_pipeline_final.sh)
+
+This script is to be run on paired-end sequencing data. It will remove adapters, merge paired-end reads, and remove duplicates for optimal data storage. 
+
+If you are not running this script, please ensure that your files are in the following format to be processed by the next script: `*_clean_merged.fastq.gz`.
 
 ### Submitting the clean up script. 
+
 After ensuring you have edited the *.env file and the link_text/sample_text file, you can submitt the script with the following command. 
 ```bash
 sbatch $WORKSPACE/reference/script/clean_up_submitter.sh <edited_enviorment_file>.env
 ```
+
 ### Next Steps
+
 To map to one single organism, follow the instruction under [Single Organism Mapping](#single-organism-mapping). 
 
 To start metagenomic analysis, follow the instruction under [Metagenomics](#metagenomics).
 
-# Single Organism Mapping
+
+## Single Organism Mapping
 
 Script: [mapping_script.sh](../Scripts/mapping_script.sh)
 
@@ -77,6 +95,7 @@ cd $WORKSPACE/reference/scripts/genome_txt
 If not, please email jennifer.zhu@unibe.ch. 
 
 ### Changing mapped genome
+
 The script will automatically map to all available genomes specified in genome_txt to all samples in __sample_text__, unless specified in __mapped_genome__. To change this, you will have to write your own __combination_text__ in the following format:
 ```
 ${sample_name}\t${full_genome_path}
@@ -89,11 +108,14 @@ SNG_19	$WORKSPACe/reference/genomes/Larix/Larix_decidua_mtDNA.fasta
 Unfortunately, this is not currently automated. Please use this format with caution as it may result in errors and script failures.
 
 ### Submitting the mapping script. 
+
 After ensuring you the *.env file has all of the variables set to the desired setting, you can submit the script with the following command:
 ```bash
 sbatch $WORKSPACE/reference/script/mapping_submitter.sh <edited_enviorment_file>.env
 ```
-### Getting Summary data
+
+### Getting Summary Data
+
 Submit the Summary script:
 ```bash
 sbatch $WORKSPACE/reference/script/summary.sh <edited_enviorment_file>.env
@@ -103,7 +125,9 @@ Then run multiqc with the following command:
 multiqc . --ignore-symlinks --config modifed_eager.yaml --tag ${project_name}_${run} -o ${project_name}_multiqc_${run}
 ```
 
-# Metagenomics 
+
+## Metagenomics 
+
 This is currently underconstruction 🚧.
 
 ### Submitting the metagenomic script. 
@@ -112,7 +136,8 @@ After ensuring you the *.env file has all of the variables set to the desired se
 sbatch $WORKSPACE/reference/script/metagenomics_submitter.sh <edited_enviorment_file>.env
 ```
 
-# Finishing up
+
+## Finishing up
 
 Please delete files that are no longer necessary so that we have enough storage space in the cluster. 
 
@@ -130,6 +155,6 @@ rm -r temp_files
 
 
 
-# Troubleshooting
+## Troubleshooting
 
 If you need help with the scripts, please email jennifer.zhu@unibe.ch. Otherwise, googling the error code found in the __\*.err__ file is always a good place to start. [You can also start a support ticket with the HPC team](https://hpc-unibe-ch.github.io/support/). 
