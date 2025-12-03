@@ -14,7 +14,7 @@ This pipeline makes use of an environment file to be used in conjunction with th
 
 ## Setup
 
-Please copy the *.env template file to the __project__ directory or your project-specific directory and rename it in the following format: <project_name>_<species>_<run_number>.env
+Please copy the *.env template file to the `projects` directory or your project-specific directory and rename it in the following format: <project_name>_<species>_<run_number>.env
 ```bash
 cp $WORKSPACE/reference/scripts/variable_file_example.env <project_directory_path>
 ```
@@ -57,7 +57,7 @@ This script will automatically run the [clean_up_submitter.sh](../Scripts/clean_
 
 ## Running Script with pre-downloaded fastq files (Edit) 
 
-If your fastq files are already downloaded, ensure that link_text is set to "NA" in the *.env file to skip fastq download. Then place all your fastq files in the same directory (e.g., `project` directory) and run the same script.
+If your fastq files are already downloaded, ensure that link_text is set to "NA" in the *.env file to skip fastq download. Then place all your fastq files in the same directory (e.g., `projects` directory) and run the same script.
 
 >[!warning] 
 >If you are not downloading directly from UHTS-lims and running with pre-downloaded fastq files, DO NOT run multiple scripts at once in the same directory. This will result in the same final sample_text as the program will generate a sample_text with all the *.fastq.gz files in the same directory. This script will also generate sample names based on the UHTS-lims naming convention. If you have a different naming convention, please edit and run the [sample_autowrite.sh] script. 
