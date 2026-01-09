@@ -36,6 +36,12 @@ Sediments are cut with a sterile surgical knife.
 At this point, the sedaDNA containers can be stored in -20°C freezer until DNA extraction
 
 ## Macrofossil sieving 
-1. Sieve samples as usual
-2. 
+
+### Connecting the pump
+Connect the hose out of the smaller part of the pump to the drain and connect the otherside to a "drum". Place these in the fumehood.
+
+### Sieving and sampling Macrofossils
+1. Sieve samples as usual in the fumehood
+2. Transfer the final sieved products into a petri dish (you can place anything noteworthy in the cover of the petri dish)
+3. Identify interesting Needles, Periderms, and budscales for aDNA extraction and place them individually into 1.5ml Eppendorf tubes with new tweezers 
 
